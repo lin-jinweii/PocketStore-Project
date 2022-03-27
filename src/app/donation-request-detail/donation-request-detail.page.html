@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Donation Details</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-label>
+    <img height="150px" width="200px" [src]="donation.image" id="img">
+  </ion-label>
+  <ion-label>
+    <p class="text">ID: {{donationid}}</p>
+    <div *ngIf="donation.status == 'Pending Approval'">
+      <h2 style="color:yellow">{{donation.status}}</h2>
+    </div>
+    <div *ngIf="donation.status == 'Approved'">
+      <h2 style="color:lightgreen">{{donation.status}}</h2>
+    </div>
+    <div *ngIf="donation.status == 'Rejected'">
+      <h2 style="color:red">{{donation.status}}</h2>
+    </div>
+    <h3>Username: {{donation.username}}</h3>
+    <h3>Name: {{donation.name}}</h3>
+    <h3>Qualtiy: {{donation.quality}}</h3>
+    <h3>Damages: {{donation.damages}}</h3>
+    <h3>Quantity Available: {{donation.available}}</h3>
+  </ion-label>
+</ion-content>

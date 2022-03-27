@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Donation List</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary" [routerLink]="['/donation-request']">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list>
+    <ion-item *ngFor="let item of donations">
+      <ion-thumbnail slot="start">
+        <img [src]=item.image>
+      </ion-thumbnail>
+      <ion-label [routerLink]="['/donation-request-detail', item.id]">
+        <p><ion-icon name="person" slot="start"></ion-icon>{{item.username}}</p>
+        <h2>{{item.name}}</h2>
+        <div *ngIf="item.status == 'Pending Approval'">
+          <h3 style="color:yellow">{{item.status}}</h3>
+        </div>
+        <div *ngIf="item.status == 'Approved'">
+          <h3 style="color:lightgreen">{{item.status}}</h3>
+        </div>
+        <div *ngIf="item.status == 'Rejected'">
+          <h3 style="color:red">{{item.status}}</h3>
+        </div>
+      </ion-label>
+      <ion-icon slot="end" name="trash-bin" (click)="deleteDonation(item)" *ngIf="item.status == 'Pending Approval' && item.username == this.email"></ion-icon> 
+    </ion-item>
+  </ion-list>
+
+</ion-content>

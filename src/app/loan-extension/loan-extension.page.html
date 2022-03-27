@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Loan Extension Request
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let loan of loans">
+      <ion-label>
+        <p><ion-icon name="person" slot="start"></ion-icon>{{loan.username}}</p>
+        <h3 *ngFor="let item of loan.items">{{item.id}} x {{item.quantity}}</h3>
+        <br/>
+        <h3>Days Requested: {{loan.days}}</h3>
+        <h3>Reason: {{loan.reason}}</h3>
+        <ion-button color="success" fill="outline" (click)="statusUpdate(loan, 'approved')">Approve</ion-button>
+        <ion-button color="danger" fill="outline" (click)="statusUpdate(loan, 'rejected')">Reject</ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

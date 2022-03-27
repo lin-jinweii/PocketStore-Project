@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Loan Extension Form</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="loanextensionForm">
+    <ion-item>
+      <ion-label>No. of Days</ion-label>
+      <ion-input type="number" formControlName="days"></ion-input>
+      <ion-item *ngIf="loanextensionForm.controls.days.errors && submitted">
+        <ion-label color="danger">
+          Days must be positive
+        </ion-label>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-label>Reason</ion-label>
+      <ion-input formControlName="reason"></ion-input>
+      <ion-label *ngIf="loanextensionForm.controls.reason.errors && submitted" color="danger">
+        Reason is required
+      </ion-label>
+    </ion-item>
+    <ion-button expand="block" color="secondary" (click)="extendLoan()">Request</ion-button>
+  </form>
+</ion-content>

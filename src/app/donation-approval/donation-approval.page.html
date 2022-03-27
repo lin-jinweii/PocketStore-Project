@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Donation Approval</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Filter by Quality</ion-label>
+    <ion-select (ionChange)="filter($event)" ([ngModel])="NewUsed" name="NewUsed" >
+      <ion-select-option value="New">New</ion-select-option>
+      <ion-select-option value="Used">Used</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <div id="container" *ngIf="donations.length===0">
+    <strong>There are no donations to be approved yet</strong>
+  </div>
+
+  <ion-list>
+    <ion-item *ngFor="let donation of donations">
+      <ion-label>
+        <p><ion-icon name="person" slot="start"></ion-icon>{{donation.username}}</p>
+        <img [src]="donation.image" width="200px" height="150px">
+        <br/>
+        <h3>Name: {{donation.name}}</h3>
+        <h3>Quality: {{donation.quality}}</h3>
+        <h3>Damages: {{donation.damages}}</h3>
+        <h3>Available: {{donation.available}}</h3>
+        <ion-button color="success" fill="outline" (click)="statusUpdate(donation, 'Approved')">Approve</ion-button>
+        <ion-button color="danger" fill="outline" (click)="statusUpdate(donation, 'Rejected')">Reject</ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

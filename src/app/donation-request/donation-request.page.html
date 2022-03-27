@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Donation Request</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="donationrequestForm">
+    <ion-item>
+      <img [src]="photo">
+    </ion-item>
+    <ion-item>
+      <ion-button id="camera-button" (click)="takePhoto()">
+        <ion-icon name="camera"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>Item Name</ion-label>
+      <ion-input formControlName="name"></ion-input>
+      <ion-label *ngIf="donationrequestForm.controls.name.errors && submitted" color="danger">
+        Name is required
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Quality</ion-label>
+      <ion-select formControlName="quality">
+        <ion-select-option value="New">New</ion-select-option>
+        <ion-select-option value="Used">Used</ion-select-option>
+      </ion-select>
+      <ion-label *ngIf="donationrequestForm.controls.quality.errors && submitted" color="danger">
+        Quality needs to be selected
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Damages (If any)</ion-label>
+      <ion-input formControlName="damages"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Quantity Available</ion-label>
+      <ion-input type="number" formControlName="available"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="donationrequestForm.controls.available.errors && submitted">
+      <ion-label color="danger">
+        Quantity must be positive
+      </ion-label>
+    </ion-item>
+    <ion-button expand="block" color="secondary" (click)="add()">Request</ion-button>
+  </form>
+</ion-content>
