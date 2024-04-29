@@ -15,10 +15,6 @@ There are some considerations to note for the project:
 - No sign up as the manager will be the one creating the account for user (school based)
 - No log out as only one account per person and prevent helping to log in for others
 
-## Installation
-
-Install the latest version of [Visual Studio](https://visualstudio.microsoft.com/downloads/)
-
 ## Setting Up
 
 1) Install **Nodejs** (https://nodejs.org/en/)
